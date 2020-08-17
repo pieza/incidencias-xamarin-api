@@ -23,10 +23,6 @@ app.use(passport.initialize())
 app.use(process.env.API_PATH, require("./routes/user.route"))
 app.use(process.env.API_PATH, require("./routes/incidence.route"))
 
-app.use('/', (req, res, next) => {
-  return res.status(200).send("API de incidencias-xamarin!")
-})
-
 // error handle
 app.use((err, req, res, next) => {
   console.log(err)
