@@ -21,9 +21,6 @@ router.post("/login", async (req, res, next) => {
     if(!user.comparePassword(password))
       return res.status(401).json({message: 'Correo o contraseña incorrectos.' })
 
-    if(!user.active)
-      return res.status(401).json({message: 'El usuario se encuentra inactivo.' })
-
     jwt.sign(user.toObject(),
       process.env.SECRET_JWT_KEY.toString(), 
       { expiresIn: parseInt(process.env.TOKEN_EXPIRATION) }, 
